@@ -1,0 +1,19 @@
+.registerPanel {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+}
+
+.panelHeader img {
+  width: 60%;
+  max-width: 320px;
+  height: auto;
+}
+
+.loginButton {
+  margin-top: 12px;
+}
+
+.errorMessage {
+  white-space: pre-line;
+}

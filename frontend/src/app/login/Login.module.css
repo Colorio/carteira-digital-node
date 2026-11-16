@@ -1,0 +1,15 @@
+.loginPanel {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+}
+
+.loginPanel .panelHeader img {
+  width: 60%;
+  max-width: 320px;
+  height: auto;
+}
+
+.registerButton {
+  margin-top: 12px;
+}

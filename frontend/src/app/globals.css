@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-sans: Rubik, sans-serif;
+  --primary-color: #022a48;
+  --secondary-color: #f2c363;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 18px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 24px;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+}
+
+main > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  background: white;
+  color: var(--primary-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: 8px;
+  padding: 28px;
+  width: 100%;
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.panel-two-columns {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.panel-two-columns > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.panel-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  width: 100%;
+}
+
+form .form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+form input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 24px 8px;
+  font-size: 16px;
+  color: var(--primary-color);
+  margin-top: 1px;
+}
+
+form input:focus,
+form input:focus-visible {
+  outline-color: var(--primary-color);
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:not(:disabled):hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+}
+
+button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.text-sucess,
+.text-credit {
+  color: #198754;
+}
+
+.text-error,
+.text-debit {
+  color: #dc3545;
+}
+
+p {
+  margin: 0;
+}
+
+.swal-confirm-button {
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
+  font-weight: 700 !important;
+}
+
+.swal-cancel-button {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.input-currency {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--primary-color);
+}
+
+.input-currency span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.input-currency input {
+  border: none;
+  outline: none;
+  padding-left: 8px;
+}
+
+.input-currency input:focus,
+.input-currency input:focus-visible {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .app {
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .panel-two-columns {
+    flex-direction: column;
+  }
+
+  .panel {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+
+  .app {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  main > div {
+    gap: 16px;
+  }
+
+  .panel {
+    padding: 18px;
+    border-width: 2px;
+    gap: 20px;
+  }
+
+  .panel-header {
+    gap: 16px;
+  }
+
+  form {
+    gap: 20px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}

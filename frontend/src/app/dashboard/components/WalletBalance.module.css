@@ -1,0 +1,13 @@
+.balance {
+  font-size: 40px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.balancePositive {
+  color: #198754;
+}
+
+.balanceNegative {
+  color: #dc3545;
+}

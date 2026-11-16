@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 4px solid var(--secondary-color);
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 20px 28px;
+}
+
+.header img {
+  width: 60%;
+  max-width: 220px;
+  height: auto;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--primary-color);
+}

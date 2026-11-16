@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TransactionType {
+  DEPOSIT
+  TRANSFER
+  REVERSAL
+}
+
+enum TransactionStatus {
+  COMPLETED
+  REVERSED
+}
+
+enum AuditAction {
+  DEPOSIT
+  TRANSFER
+  REVERSAL
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String   @unique
+  cpf       String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  wallet    Wallet?
+  auditLogs AuditLog[]
+}
+
+model Wallet {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @unique @db.Uuid
+  balance   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User          @relation(fields: [userId], references: [id])
+  entries WalletEntry[]
+}
+
+model Transaction {
+  id                    String            @id @default(uuid()) @db.Uuid
+  type                  TransactionType
+  status                TransactionStatus @default(COMPLETED)
+  amount                Int
+  reversesTransactionId String?           @unique @db.Uuid
+  createdAt             DateTime          @default(now())
+
+  entries  WalletEntry[]
+  auditLog AuditLog?
+
+  reversesTransaction Transaction? @relation("TransactionReversal", fields: [reversesTransactionId], references: [id])
+  reversal            Transaction? @relation("TransactionReversal")
+}
+
+model WalletEntry {
+  id            String   @id @default(uuid()) @db.Uuid
+  walletId      String   @db.Uuid
+  transactionId String   @db.Uuid
+  amount        Int
+  createdAt     DateTime @default(now())
+
+  wallet      Wallet      @relation(fields: [walletId], references: [id])
+  transaction Transaction @relation(fields: [transactionId], references: [id])
+}
+
+model AuditLog {
+  id            String      @id @default(uuid()) @db.Uuid
+  actorUserId   String      @db.Uuid
+  transactionId String      @unique @db.Uuid
+  action        AuditAction
+  metadata      Json?
+  createdAt     DateTime    @default(now())
+
+  actor       User        @relation(fields: [actorUserId], references: [id], onDelete: Restrict)
+  transaction Transaction @relation(fields: [transactionId], references: [id], onDelete: Restrict)
+}

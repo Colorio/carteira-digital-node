@@ -1,0 +1,23 @@
+.transactionItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--secondary-color);
+  padding: 4px 0 16px;
+}
+
+.transactionItem button {
+  padding: 4px 8px;
+  color: white;
+  background-color: #dc3545;
+  font-size: 16px;
+}
+
+.amount {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+}
